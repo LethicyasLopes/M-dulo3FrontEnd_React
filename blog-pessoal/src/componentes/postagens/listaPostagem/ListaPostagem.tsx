@@ -1,19 +1,22 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import Postagem from '../../../modelos/Postagem';
-import { busca } from '../../../servicos/Servicos';
+import { busca } from '../../../servicos/Servicos'
 import { Card, CardActions, CardContent, Button, Typography } from '@material-ui/core';
 import './ListaPostagem.css';
 import useLocalStorage from 'react-use-localstorage';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'
 import { Box } from '@mui/material';
+import { useSelector } from "react-redux";
+import { TokenState } from '../../../store/tokens/tokensReducer';
 
 function ListaPostagem() {
 
-    const [posts, setPosts] = useState<Postagem[]>([])
-    const [token, setToken] = useLocalStorage('token');
-
+    const [posts, setPosts] = useState<Postagem[]>([]);
     let navigate = useNavigate();
+    const token = useSelector<TokenState, TokenState["tokens"]>(
+        (state) => state.tokens
+    );
 
     useEffect(() => {
         if (token == "") {
