@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { Card, CardActions, CardContent, Button, Typography } from '@material-ui/core';
 import './DeletarTema.css';
 import { useNavigate, useParams } from 'react-router-dom';
-import useLocalStorage from 'react-use-localstorage';
 import { buscaId, deleteId } from '../../../servicos/Servicos';
 import Tema from '../../../modelos/Tema';
 import { Box } from '@mui/material';
